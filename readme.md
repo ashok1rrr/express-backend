@@ -1,178 +1,210 @@
-# 🚀 Frontend Developer Assignment
+Tech Stack
+Node.js – Backend runtime
+Express.js – Fast, minimalist backend framework
+MongoDB – NoSQL database for storing user data
+JWT (JSON Web Token) – Secure user authentication
+Project Setup
+1. Clone the Repository
+To get started, clone the repository to your local machine:
 
-## 📌 Tech Stack
-- **React.js** – Component-based UI library.
-- **JavaScript (ES6+)** – Core programming language.
-- **React Router** – Client-side navigation.
-- **Axios** – HTTP client for API communication.
-- **Context API** – Global state management.
+bash
+Copy
+Edit
+git clone https://github.com/JosephRemingston/onlyclick-recuritment.git
+2. Install Dependencies
+Navigate to the project folder and run the following command to install the required dependencies:
 
-## 📝 Task Breakdown
+bash
+Copy
+Edit
+npm install
+3. Environment Variables
+Create a .env file in the root directory of the project and add the following variables:
 
-### 1️⃣ Project Setup
-- ✅ Initialize a React project.
+env
+Copy
+Edit
+MONGO_URI=mongodb://localhost:27017/your-db-name
+JWT_SECRET=your-secret-key
+PORT=5000
+MONGO_URI: Your MongoDB connection string. Replace localhost:27017/your-db-name with the URL to your MongoDB instance. If you're using MongoDB Atlas, it will be a different URL.
+JWT_SECRET: A secret key used to sign JWT tokens. Keep this key private and secure.
+PORT: The port number on which your server will run (default is 5000).
+4. Run the Development Server
+To start the development server, run the following command:
 
-### 2️⃣ Authentication System
-- ✅ **Signup & Login Pages**
-  - Form validation using `react-hook-form` or plain React state.
-  - Password validation (min length, special characters).
-  - Store JWT token securely (`localStorage` / `sessionStorage`).
-  - Implement error handling for incorrect logins.
+bash
+Copy
+Edit
+npm run dev
+This will start the server on http://localhost:5000.
 
-- ✅ **AuthContext API**
-  - Create an authentication context.
-  - Store and manage user authentication state globally.
+API Endpoints
+1. User Authentication
+POST /signup
+Register a new user.
 
-- ✅ **Protected Routes**
-  - Ensure unauthorized users cannot access the dashboard.
-  - Redirect unauthenticated users to the login page.
+Request Body:
 
-### 3️⃣ Backend Integration
-- ✅ **Use Axios for API communication**
-  - Implement API requests (`POST /signup`, `POST /login`, `GET /dashboard`).
-  - Properly handle API responses & errors.
-  - Implement loading states and error messages.
+json
+Copy
+Edit
+{
+  "name": "User Name",
+  "email": "user@example.com",
+  "password": "yourpassword"
+}
+Response:
 
-### 4️⃣ Dashboard Page
-- ✅ **Fetch & Display Protected User Data**
-  - Make an authenticated request to fetch user-specific data.
-  - Display data in a user-friendly manner (table, cards, etc.).
+201 Created – User created successfully.
+400 Bad Request – If the user already exists.
+POST /login
+Authenticate a user and issue a JWT token.
 
-- ✅ **Logout Feature**
-  - Clear JWT token and redirect to the login page.
+Request Body:
 
-### 5️⃣ State Management
-- ✅ **Use React Context API (or Redux) to:**
-  - Store the authenticated user’s data.
-  - Provide global authentication state.
+json
+Copy
+Edit
+{
+  "email": "user@example.com",
+  "password": "yourpassword"
+}
+Response:
 
-## ✅ Deliverables
-✔️ Fully working React frontend with:
-- Login & Signup pages (form validation).
-- `AuthContext` to manage user authentication.
-- Protected Routes (users must log in to access the dashboard).
-- Backend Integration via Axios.
-- Proper Routing using React Router.
+200 OK – JWT token issued successfully.
+json
+Copy
+Edit
+{
+  "token": "your-jwt-token"
+}
+400 Bad Request – Invalid credentials.
+2. CRUD API for Sample Resource (Tasks)
+For this example, we will implement CRUD operations for a Task resource.
 
-## 🎯 Bonus Challenge (Optional)
-🔥 **Dark Mode Support** – Implement a theme switcher.  
-🔥 **Animations** – Use Framer Motion or CSS animations for smooth UI transitions.  
+GET /tasks
+Retrieve all tasks.
 
----
+Response:
 
-# 🛠 Backend Developer Assignment
+json
+Copy
+Edit
+[
+  {
+    "id": "task-id-1",
+    "title": "Task 1",
+    "description": "Task description",
+    "createdAt": "2025-03-14T10:00:00Z"
+  }
+]
+POST /tasks
+Create a new task.
 
-## 📌 Tech Stack
-- **Node.js** – Backend runtime.
-- **Express.js** – Fast, minimalist backend framework.
-- **MongoDB** – NoSQL database for storing user data.
-- **JWT (JSON Web Token)** – Secure user authentication.
+Request Body:
 
-## 📝 Task Breakdown
+json
+Copy
+Edit
+{
+  "title": "New Task",
+  "description": "Description of the new task"
+}
+Response:
 
-### 1️⃣ Project Setup
-- ✅ **Initialize an Express.js backend**
-- ✅ **Configure Express Middleware**
-  - `express.json()` for parsing JSON.
-  - `cors` for handling cross-origin requests.
+201 Created – Task created successfully.
+PUT /tasks/:id
+Update an existing task.
 
-### 2️⃣ User Authentication
-- ✅ **Implement Signup & Login API Endpoints**
-  - `/signup` – Register a new user.
-  - `/login` – Authenticate and return JWT token.
+Request Body:
 
-- ✅ **User Schema (MongoDB)**
-  - Fields: `name`, `email`, `password` (hashed), `createdAt`.
+json
+Copy
+Edit
+{
+  "title": "Updated Task",
+  "description": "Updated description of the task"
+}
+Response:
 
-- ✅ **JWT Authentication**
-  - Generate a JWT token upon successful login.
-  - Middleware to protect private routes.
+200 OK – Task updated successfully.
+404 Not Found – If the task with the specified ID does not exist.
+DELETE /tasks/:id
+Delete a task.
 
-### 3️⃣ CRUD API for Sample Resource
-- ✅ **Implement basic CRUD APIs (e.g., for tasks or products)**
-  - `POST /tasks` – Create a new task.
-  - `GET /tasks` – Fetch all tasks.
-  - `PUT /tasks/:id` – Update a task.
-  - `DELETE /tasks/:id` – Delete a task.
+Response:
 
-## ✅ Deliverables
-✔️ Working Express API with:
-- Authentication System (Signup/Login with JWT).
-- MongoDB Schema (`User`, `Tasks`).
-- CRUD API for Sample Resource.
-- TypeScript Interfaces for API responses.
+200 OK – Task deleted successfully.
+404 Not Found – If the task with the specified ID does not exist.
+Database Schema
+User Schema (MongoDB)
+The user model defines the fields for user data:
 
-## 🎯 Bonus Challenge (Optional)
-🔥 **Load Balancing** – Implement a reverse proxy (e.g., Nginx).  
-🔥 **Rate Limiting** – Prevent excessive API requests.  
+ts
+Copy
+Edit
+const UserSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now }
+});
+Task Schema (MongoDB)
+The task model defines the fields for task data:
 
----
+ts
+Copy
+Edit
+const TaskSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now }
+});
+Middleware
+JWT Authentication Middleware
+To protect private routes, you can use the following middleware to verify the JWT token:
 
-# 🖌 UI/UX Designer Assignment
+ts
+Copy
+Edit
+import jwt from 'jsonwebtoken';
 
-## 📌 Tech Stack
-- **Figma** – UI/UX Design Tool.
-- **Color Theory** – Effective color palettes.
-- **Typography** – Readable font selection.
+const authMiddleware = (req, res, next) => {
+  const token = req.header('Authorization')?.replace('Bearer ', '');
 
-## 📝 Task Breakdown
-- ✅ **Design Login & Dashboard Pages**
-  - Clean, modern, and user-friendly UI.
-  - Proper spacing and responsiveness.
+  if (!token) {
+    return res.status(401).json({ message: 'Access denied' });
+  }
 
-- ✅ **Color Palette Selection**
-  - Choose a visually appealing, accessible color scheme.
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(400).json({ message: 'Invalid token' });
+  }
+};
+TypeScript Interfaces for API Responses
+Here are the TypeScript interfaces for the API responses:
 
-- ✅ **Style Guide**
-  - Define buttons, input fields, typography.
-
-## ✅ Deliverables
-✔️ Figma Link with the final design.  
-✔️ Exported Color Codes & Fonts.  
-✔️ PR with `design-assets.md` file (`Figma` link + assets).  
-
-## 🎯 Bonus Challenge (Optional)
-🔥 **Mobile-first UI Design** – Fully responsive from the start.  
-
----
-
-# 🔍 Software Tester Assignment
-
-## 📌 Tech Stack
-- **Jest** – Unit testing for backend.
-- **Cypress** – End-to-end (E2E) testing.
-- **Postman** – API testing.
-
-## 📝 Task Breakdown
-
-### 1️⃣ Backend Testing (Jest)
-- ✅ Write unit tests for authentication & CRUD APIs.
-- ✅ Store test cases in `__tests__` folder.
-
-### 2️⃣ Frontend Testing (Cypress)
-- ✅ Write E2E tests for login/signup flow.
-- ✅ Test protected routes.
-
-### 3️⃣ Test Coverage
-- ✅ Ensure at least **80% coverage**.
-
-## ✅ Deliverables
-✔️ Jest test files for backend (`__tests__` folder).  
-✔️ Cypress test cases for frontend.  
-✔️ PR with `testing-setup` branch.  
-
-## 🎯 Bonus Challenge (Optional)
-🔥 **Automated Regression Testing** – Run tests on PRs automatically.  
-
----
-
-# 🔄 Submission Process
-
-1️⃣ Fork the repository & create a branch (`<name>-<role>`).  
-2️⃣ Complete the assigned task & commit changes.  
-3️⃣ Create a **Pull Request (PR)**.  
-4️⃣ Add proper documentation in the PR description. 
-5️⃣ UI / UX Designers also create a PR with the figma link in a file and the prototype link
-
-⏳ **Deadline: 15/03/2025**  
-🔥 **Bonus Challenge (Optional)** Each team member has extra challenges to go beyond expectations! 🚀
+User Interface
+ts
+Copy
+Edit
+interface User {
+  _id: string;
+  name: string;
+  email: string;
+  createdAt: string;
+}
+Task Interface
+ts
+Copy
+Edit
+interface Task {
+  _id: string;
+  title: string;
+  description: string;
+  createdAt: string;
+}
