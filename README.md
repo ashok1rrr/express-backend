@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend Developer Assignment - Authentication Dashboard
 
-## Getting Started
+A modern React.js application demonstrating secure authentication, protected routes, and dashboard functionality using best practices and modern web technologies.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Authentication System**
+  - Secure signup and login with form validation
+  - Protected routes with authentication guards
+  - JWT token management
+  - Global authentication state management
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Dashboard**
+  - Protected user data display
+  - User-friendly data presentation
+  - Secure logout functionality
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Theme Support**
+  - Dark/Light mode toggle
+  - Persistent theme preference
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠 Tech Stack
 
-## Learn More
+- **React.js** - UI Component Library
+- **Next.js** - React Framework
+- **Shadcn/ui** - UI Component Library
+- **TailwindCSS** - Styling
+- **JavaScript (ES6+)** - Programming Language
+- **React Router** - Client-side Navigation
+- **Context API** - State Management
+- **JWT** - Authentication
 
-To learn more about Next.js, take a look at the following resources:
+## 🔒 Authentication Flow
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **User Registration**
+   - Form validation with required fields
+   - Password strength requirements
+   - Error handling for existing users
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **User Login**
+   - Secure credential validation
+   - JWT token storage
+   - Automatic redirection to dashboard
 
-## Deploy on Vercel
+3. **Protected Routes**
+   - Authentication state verification
+   - Unauthorized access prevention
+   - Automatic login redirection
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎨 Theme Implementation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The application supports dynamic theme switching between light and dark modes:
+
+- Theme toggle in navigation
+- System preference detection
+- Persistent theme selection
+
+## 🔌 API Integration
+
+- JWT token management
+- Centralized error handling
+- Loading state management
+
+## 📱 Responsive Design
+
+The application is fully responsive and works seamlessly across:
+
+- Desktop browsers
+- Tablets
+- Mobile devices
