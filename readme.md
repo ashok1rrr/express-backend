@@ -1,178 +1,192 @@
-# 🚀 Frontend Developer Assignment
+# **OneClick Backend API** 🚀  
+A **secure and scalable backend** for user authentication and task management, built using **Node.js, Express, MongoDB, JWT, and Nginx**.
 
-## 📌 Tech Stack
-- **React.js** – Component-based UI library.
-- **JavaScript (ES6+)** – Core programming language.
-- **React Router** – Client-side navigation.
-- **Axios** – HTTP client for API communication.
-- **Context API** – Global state management.
-
-## 📝 Task Breakdown
-
-### 1️⃣ Project Setup
-- ✅ Initialize a React project.
-
-### 2️⃣ Authentication System
-- ✅ **Signup & Login Pages**
-  - Form validation using `react-hook-form` or plain React state.
-  - Password validation (min length, special characters).
-  - Store JWT token securely (`localStorage` / `sessionStorage`).
-  - Implement error handling for incorrect logins.
-
-- ✅ **AuthContext API**
-  - Create an authentication context.
-  - Store and manage user authentication state globally.
-
-- ✅ **Protected Routes**
-  - Ensure unauthorized users cannot access the dashboard.
-  - Redirect unauthenticated users to the login page.
-
-### 3️⃣ Backend Integration
-- ✅ **Use Axios for API communication**
-  - Implement API requests (`POST /signup`, `POST /login`, `GET /dashboard`).
-  - Properly handle API responses & errors.
-  - Implement loading states and error messages.
-
-### 4️⃣ Dashboard Page
-- ✅ **Fetch & Display Protected User Data**
-  - Make an authenticated request to fetch user-specific data.
-  - Display data in a user-friendly manner (table, cards, etc.).
-
-- ✅ **Logout Feature**
-  - Clear JWT token and redirect to the login page.
-
-### 5️⃣ State Management
-- ✅ **Use React Context API (or Redux) to:**
-  - Store the authenticated user’s data.
-  - Provide global authentication state.
-
-## ✅ Deliverables
-✔️ Fully working React frontend with:
-- Login & Signup pages (form validation).
-- `AuthContext` to manage user authentication.
-- Protected Routes (users must log in to access the dashboard).
-- Backend Integration via Axios.
-- Proper Routing using React Router.
-
-## 🎯 Bonus Challenge (Optional)
-🔥 **Dark Mode Support** – Implement a theme switcher.  
-🔥 **Animations** – Use Framer Motion or CSS animations for smooth UI transitions.  
+## **📌 Features**  
+✅ **User Authentication** (Signup, Login, JWT Authentication)  
+✅ **Task Management** (CRUD operations)  
+✅ **Secure API** with **JWT-based Authentication**  
+✅ **Rate Limiting** to prevent excessive API requests  
+✅ **Load Balancing & Reverse Proxy** with **Nginx**  
 
 ---
 
-# 🛠 Backend Developer Assignment
+## **📂 Project Structure**  
 
-## 📌 Tech Stack
-- **Node.js** – Backend runtime.
-- **Express.js** – Fast, minimalist backend framework.
-- **MongoDB** – NoSQL database for storing user data.
-- **JWT (JSON Web Token)** – Secure user authentication.
+onlyclick-backend/ │── node_modules/
+│── src/
+│ ├── config/
+│ │ ├── db.js # MongoDB connection
+│ ├── models/
+│ │ ├── User.js
+│ │ ├── Task.js
+│ ├── routes/
+│ │ ├── authRoutes.js
+│ │ ├── taskRoutes.js
+│ ├── middleware/
+│ │ ├── authMiddleware.js
+│ │ ├── rateLimiter.js
+│ ├── controllers/
+│ │ ├── authController.js
+│ │ ├── taskController.js
+│ ├── interfaces/
+│ │ ├── apiResponses.ts
+│ ├── app.js # Main Express app
+│── .env
+│── nginx.conf # Nginx configuration
+│── package.json
+│── README.md
 
-## 📝 Task Breakdown
-
-### 1️⃣ Project Setup
-- ✅ **Initialize an Express.js backend**
-- ✅ **Configure Express Middleware**
-  - `express.json()` for parsing JSON.
-  - `cors` for handling cross-origin requests.
-
-### 2️⃣ User Authentication
-- ✅ **Implement Signup & Login API Endpoints**
-  - `/signup` – Register a new user.
-  - `/login` – Authenticate and return JWT token.
-
-- ✅ **User Schema (MongoDB)**
-  - Fields: `name`, `email`, `password` (hashed), `createdAt`.
-
-- ✅ **JWT Authentication**
-  - Generate a JWT token upon successful login.
-  - Middleware to protect private routes.
-
-### 3️⃣ CRUD API for Sample Resource
-- ✅ **Implement basic CRUD APIs (e.g., for tasks or products)**
-  - `POST /tasks` – Create a new task.
-  - `GET /tasks` – Fetch all tasks.
-  - `PUT /tasks/:id` – Update a task.
-  - `DELETE /tasks/:id` – Delete a task.
-
-## ✅ Deliverables
-✔️ Working Express API with:
-- Authentication System (Signup/Login with JWT).
-- MongoDB Schema (`User`, `Tasks`).
-- CRUD API for Sample Resource.
-- TypeScript Interfaces for API responses.
-
-## 🎯 Bonus Challenge (Optional)
-🔥 **Load Balancing** – Implement a reverse proxy (e.g., Nginx).  
-🔥 **Rate Limiting** – Prevent excessive API requests.  
 
 ---
 
-# 🖌 UI/UX Designer Assignment
-
-## 📌 Tech Stack
-- **Figma** – UI/UX Design Tool.
-- **Color Theory** – Effective color palettes.
-- **Typography** – Readable font selection.
-
-## 📝 Task Breakdown
-- ✅ **Design Login & Dashboard Pages**
-  - Clean, modern, and user-friendly UI.
-  - Proper spacing and responsiveness.
-
-- ✅ **Color Palette Selection**
-  - Choose a visually appealing, accessible color scheme.
-
-- ✅ **Style Guide**
-  - Define buttons, input fields, typography.
-
-## ✅ Deliverables
-✔️ Figma Link with the final design.  
-✔️ Exported Color Codes & Fonts.  
-✔️ PR with `design-assets.md` file (`Figma` link + assets).  
-
-## 🎯 Bonus Challenge (Optional)
-🔥 **Mobile-first UI Design** – Fully responsive from the start.  
+## **🛠️ Tech Stack**  
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB + Mongoose  
+- **Authentication:** JWT (JSON Web Token)  
+- **Security:** Rate Limiting  
+- **Reverse Proxy & Load Balancing:** Nginx  
 
 ---
 
-# 🔍 Software Tester Assignment
+## **🚀 Setup & Installation**  
 
-## 📌 Tech Stack
-- **Jest** – Unit testing for backend.
-- **Cypress** – End-to-end (E2E) testing.
-- **Postman** – API testing.
+### **1️⃣ Clone the Repository**
+```sh
+git clone https://github.com/Dhanush-2209/onlyclick-backend.git
+cd onlyclick-backend
 
-## 📝 Task Breakdown
+2️⃣ Install Dependencies
 
-### 1️⃣ Backend Testing (Jest)
-- ✅ Write unit tests for authentication & CRUD APIs.
-- ✅ Store test cases in `__tests__` folder.
+     npm install
 
-### 2️⃣ Frontend Testing (Cypress)
-- ✅ Write E2E tests for login/signup flow.
-- ✅ Test protected routes.
+3️⃣ Configure Environment Variables
+Create a .env file in the root directory and add:
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
 
-### 3️⃣ Test Coverage
-- ✅ Ensure at least **80% coverage**.
+4️⃣ Start the Server
+npm start
+Your backend should now be running on http://localhost:5000.
 
-## ✅ Deliverables
-✔️ Jest test files for backend (`__tests__` folder).  
-✔️ Cypress test cases for frontend.  
-✔️ PR with `testing-setup` branch.  
+📌 API Endpoints
+1️⃣ Authentication (Public)
+Method	Endpoint	Description
+POST	/api/auth/signup	Register a new user
+POST	/api/auth/login	User login & get JWT token
 
-## 🎯 Bonus Challenge (Optional)
-🔥 **Automated Regression Testing** – Run tests on PRs automatically.  
+🔹 Example Signup Request
+POST /api/auth/signup
+{
+    "name": "Dhanush",
+    "email": "dhanushreddy2209@gmail.com",
+    "password": "securepassword"
+}
+🔹 Example Login Response
+{
+    "token": "your_jwt_token"
+}
 
----
+2️⃣ Protected Routes (Require JWT)
+Method	Endpoint	Description
+GET	/api/auth/protected	Test protected route
 
-# 🔄 Submission Process
+🔹 Usage: Send JWT token in Authorization header:
+Authorization: Bearer your_jwt_token
 
-1️⃣ Fork the repository & create a branch (`<name>-<role>`).  
-2️⃣ Complete the assigned task & commit changes.  
-3️⃣ Create a **Pull Request (PR)**.  
-4️⃣ Add proper documentation in the PR description. 
-5️⃣ UI / UX Designers also create a PR with the figma link in a file and the prototype link
+3️⃣ Task Management (CRUD)
+Method	Endpoint	Description
+POST	/api/tasks	Create a new task
+GET	/api/tasks	Get all tasks
+GET	/api/tasks/:id	Get task by ID
+PUT	/api/tasks/:id	Update task by ID
+DELETE	/api/tasks/:id	Delete task by ID
 
-⏳ **Deadline: 15/03/2025**  
-🔥 **Bonus Challenge (Optional)** Each team member has extra challenges to go beyond expectations! 🚀
+🔹 Example Create Task Request
+POST /api/tasks
+{
+    "title": "Complete Assignment",
+    "description": "Finish the OneClick Backend task"
+}
+
+🔹 Example Response
+{
+    "success": true,
+    "message": "Task created successfully",
+    "data": {
+        "_id": "task_id",
+        "title": "Complete Assignment",
+        "description": "Finish the OneClick Backend task",
+        "user": "user_id"
+    }
+}
+
+
+🔐 JWT Authentication
+Upon login, the user gets a JWT Token.
+To access protected routes, include this token in the Authorization header:
+Authorization: Bearer your_jwt_token
+If the token is missing or invalid, the request is denied.
+
+⏳ Rate Limiting
+To prevent abuse, we have implemented rate limiting in rateLimiter.js.
+
+Maximum 100 requests per 15 minutes per IP.
+If exceeded, it returns:
+
+{
+    "success": false,
+    "message": "Too many requests, please try again later."
+}
+
+
+⚡ Nginx Configuration
+We have set up Nginx as a Reverse Proxy to forward requests to Node.js.
+
+🛠️ Steps to Configure Nginx
+1️⃣ Install Nginx (Windows/Linux/macOS)
+2️⃣ Modify nginx.conf (Location: nginx/conf/nginx.conf)
+
+🔹 Example Configuration (nginx.conf)
+
+server {
+    listen 80;
+    server_name localhost;
+
+    location / {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+
+3️⃣ Restart Nginx
+nginx -s reload
+
+Now, your backend is accessible at:
+🔹 http://localhost/api/auth/signup
+🔹 http://localhost/api/tasks
+
+📌 Final Checklist Before Submission
+✔ Signup & Login working in Postman
+✔ JWT Authentication tested
+✔ CRUD operations working for tasks
+✔ Rate Limiting enforced
+✔ Nginx forwarding requests correctly
+
+📜 License
+This project is open-source under the MIT License.
+
+📞 Contact
+For any queries, feel free to reach out:
+📧 Email: dhanushreddy2209@gmail.com
+👨‍💻 GitHub: Dhanush-2209
+
+
+
+
+
